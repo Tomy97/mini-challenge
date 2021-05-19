@@ -4,6 +4,8 @@ import useFetch from '../Components/useFetch'
 
 const Home = () => {
     const { state, getData } = useFetch();
+
+    console.log(xd);
     return (
         <Table getData={getData} >
             <thead>
