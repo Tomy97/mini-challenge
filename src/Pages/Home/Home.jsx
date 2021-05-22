@@ -3,7 +3,8 @@ import { Table } from 'react-bootstrap';
 import useFetch from '../../Hooks/useFetch';
 const Home = () => {
 
-    const { state } = useFetch();
+    const { state, getApi } = useFetch();
+
     console.log(state);
     const trash = {
         color: '#F00000'
