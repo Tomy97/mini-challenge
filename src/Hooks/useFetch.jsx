@@ -1,23 +1,42 @@
-import { useState } from "react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const useFetch = () => {
-    const [status, setStatus] = useState([...setStatus]);
+    const [status, setStatus] = useState({
+        data: [],
+        limit: 10,
+        activePage: 1
+    });
 
-    const getApi = async () => {
-        try {
-            const res = await fetch('https://jsonplaceholder.typicode.com/posts')
-            const data = await res.json()
+    useEffect(() => {
+        axios.get(`https://jsonplaceholder.typicode.com/posts?_page=1&_limit=${status.limit}`)
+            .then((res) => {
+                setStatus((prev) => ({
+                    ...prev,
+                    data: res.data
+                }));
+            })
+            .catch((error) => console.log(error));
+    }, [status.limit])
 
-            const date = data.res.filter(status => status.id)
-            console.log(date);
-        }
-        catch (err) {
-            console.log(err);
-        }
-    }
+    const handlePageChange = (pageNumber) => {
+        setStatus((prev) => ({ ...prev, activePage: pageNumber }));
+
+        axios
+            .get(`https://jsonplaceholder.typicode.com/posts?_page=${pageNumber}`)
+            .then((res) => {
+                setStatus((prev) => ({
+                    ...prev,
+                    data: res.data
+                }));
+            })
+            .catch((error) => console.log(error));
+    };
+
     return {
         state: status,
-        getApi
+        setStatus,
+        handlePageChange
     }
 }
 
