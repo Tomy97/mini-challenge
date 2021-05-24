@@ -1,11 +1,13 @@
 import React from 'react'
-import './App.css'
-import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
-import NavigationBar from './Components/NavigationBar'
+// import { Provider } from 'react-redux'
+// import { configureStore } from '@reduxjs/toolkit'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import NavigationBar from './Components/NavigationBar'
 import Layout from './Components/Layout'
 import Home from './Pages/Home/Home'
 import CreateForm from './Pages/Form/CreateForm'
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
+import './App.css'
 const App = () => {
   return (
     <>
@@ -22,6 +24,7 @@ const App = () => {
           </Switch>
         </Router>
       </Layout>
+
     </>
   )
 }
