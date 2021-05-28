@@ -9,12 +9,12 @@ const CreateForm = () => {
     const [setValid] = useState(false)
 
     const validations = () => {
-        if (title === '' && contents === '') {
+        if (!title && !contents) {
             setAlertMessage(' Los campos no pueden estar vacios ')
-        } else if (title === '') {
+        } else if (!title) {
             setAlertMessage('El campo titulo no puede estar vacio.');
             return false;
-        } else if (contents === '') {
+        } else if (!contents) {
             setAlertMessage(`El campo 'contenido' no puede estar vacio.`);
             return false;
         } else {
@@ -65,13 +65,13 @@ const CreateForm = () => {
                         <Form onSubmit={onSubmitForm} >
                             <Form.Group>
                                 <Form.Label>
-                                    Agregue un Nuevo Titulo
+                                    Titulo
                                 </Form.Label>
                                 <Form.Control type="text" placeholder="Ingrese un titulo" onChange={(v) => setTitle(v.target.value)} value={title} />
                             </Form.Group>
                             <Form.Group>
                                 <Form.Label>
-                                    Agregue un contenido
+                                    Contenido
                                 </Form.Label>
                                 <Form.Control as="textarea" type="text" placeholder="Ingrese un contenido" rows={3} onChange={(v) => setContents(v.target.value)} value={contents} />
                             </Form.Group>
