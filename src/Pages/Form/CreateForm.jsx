@@ -6,7 +6,7 @@ const CreateForm = () => {
     const [contents, setContents] = useState('')
     const [alertMessage, setAlertMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('')
-    const [setValid] = useState(false)
+    const [, setValid] = useState(false)
 
     const validations = () => {
         if (!title && !contents) {
