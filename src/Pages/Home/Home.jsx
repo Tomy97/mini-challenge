@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from "react";
-import { Toast } from "../../alerts";
-import TableComponent from "../../Components/Table";
+import React, { useEffect, useState } from 'react'
+import { useToast } from '../../Hooks/useToast'
+import TableComponent from '../../Components/Table'
 
 const Home = (props) => {
-  const [successMessage] = useState("");
+  const [successMessage] = useState('')
   const [table, setTable] = useState({
-    title: "",
-    body: "",
-  });
+    title: '',
+    body: '',
+  })
 
   const fireSuccesMeesage = () => {
     successMessage.length &&
-      Toast.fire({
-        icon: "success",
+      useToast.fire({
+        icon: 'success',
         title: successMessage,
-      });
-  };
+      })
+  }
 
   const handleChange = (e) => {
     setTable({
@@ -27,12 +27,17 @@ const Home = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
   }
-  useEffect(fireSuccesMeesage, [successMessage]);
+  useEffect(fireSuccesMeesage, [successMessage])
   return (
     <>
-      <TableComponent table={table} handleChange={handleChange} handleSubmit={handleSubmit} isEdit />
+      <TableComponent
+        table={table}
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        isEdit
+      />
     </>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
