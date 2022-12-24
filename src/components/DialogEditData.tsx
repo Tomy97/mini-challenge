@@ -9,7 +9,7 @@ import {
   TextField,
 } from '@mui/material'
 import Grid from '@mui/material/Unstable_Grid2'
-import React, { SetStateAction } from 'react'
+
 import { Form, Formik } from 'formik'
 import InputText from './inputs/InputText'
 import * as Yup from 'yup'
@@ -36,9 +36,12 @@ const validationSchema = Yup.object().shape({
 })
 
 export const DialogEditData = ({ data, fn, open }: IDialogProps) => {
-  const handleClose = () => {}
+  const handleClose = () => {
+    fn(false)
+  }
+
   return (
-    <Dialog open={open} onClose={fn}>
+    <Dialog open={open}>
       <DialogTitle>Editar Data</DialogTitle>
       <DialogContent>
         <DialogContentText>{data.body}</DialogContentText>
@@ -70,8 +73,8 @@ export const DialogEditData = ({ data, fn, open }: IDialogProps) => {
         </Formik>
       </DialogContent>
       <DialogActions>
-        <Button onClick={() => fn}>Cancel</Button>
-        <Button onClick={() => fn}>Enviar</Button>
+        <Button onClick={() => handleClose()}>Cancel</Button>
+        <Button onClick={() => handleClose()}>Enviar</Button>
       </DialogActions>
     </Dialog>
   )

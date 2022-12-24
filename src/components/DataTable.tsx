@@ -14,11 +14,12 @@ import { useAppDispatch } from '../store/hook'
 import { deletePostAction } from '../store/actions/PostActions'
 import { useState } from 'react'
 import DialogEditData from './DialogEditData'
-interface Rows {
+
+interface iRows {
   items: Array<IPosts>
 }
 
-export const DataTable = ({ items }: Rows) => {
+export const DataTable = ({ items }: iRows) => {
   const [open, setOpen] = useState<boolean>(false)
   const dispatch = useAppDispatch()
 
@@ -27,9 +28,9 @@ export const DataTable = ({ items }: Rows) => {
   }
 
   const handleOpenModal = (data: IPosts) => {
-    setOpen(true)
-
-    return <DialogEditData open={open} data={data} fn={setOpen} />
+    if (open) {
+      return <DialogEditData fn={() => setOpen(open)} data={data} open={open} />
+    }
   }
 
   return (
