@@ -5,8 +5,8 @@ import {
   Routes,
 } from 'react-router-dom'
 import Layout from '../layouts/Layout'
-import CreatePost from '../views/createPost'
-import Home from '../views/home'
+import CreatePost from '../views/CreatePost'
+import Home from '../views/Home'
 
 export const routes = createBrowserRouter(
   createRoutesFromElements(
